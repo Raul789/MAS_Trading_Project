@@ -16,9 +16,14 @@ public class Main {
         ContainerController mainContainer = rt.createMainContainer(profile);
 
         try {
-            // Start TradingAgent with the name "Trader1"
-            AgentController agent = mainContainer.createNewAgent("Trader1", TradingAgent.class.getName(), null);
-            agent.start();
+            // Start TradingAgent
+            AgentController tradingAgent = mainContainer.createNewAgent("Trader1", TradingAgent.class.getName(), null);
+            tradingAgent.start();
+
+            // Start MarketDataAgent
+            AgentController marketDataAgent = mainContainer.createNewAgent("MarketDataAgent", MarketDataAgent.class.getName(), null);
+            marketDataAgent.start();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
